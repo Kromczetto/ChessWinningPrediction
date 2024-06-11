@@ -32,19 +32,16 @@ winner_numeric = np.array([1 if w == 'white' else 0 for w in data['winner']])
 
 # Podział na zbiory treningowy i testowy
 x_train, x_test, y_train, y_test = train_test_split(
-    moves_padded, winner_numeric, test_size=0.2
+    moves_padded, winner_numeric, test_size=0.4
 )
 
 # Tworzenie modelu
 model = tf.keras.models.Sequential([
     tf.keras.layers.Embedding(len(tokenizer.word_index)+1, 32, input_length=max_sequence_length),
-    tf.keras.layers.LSTM(64, return_sequences=True),
-    tf.keras.layers.LSTM(64),
+    tf.keras.layers.Flatten(),
     tf.keras.layers.Dense(32, activation="relu"),
-    tf.keras.layers.Dropout(0.5),
     tf.keras.layers.Dense(1, activation="sigmoid")
 ])
-
 
 model.compile(optimizer="adam", loss="binary_crossentropy", metrics=['accuracy'])
 
@@ -60,7 +57,7 @@ print("Val Accuracy: ", history.history['val_accuracy'])
 
 # Przykładowe sekwencje ruchów szachowych do przewidzenia
 sample_moves = [
-    "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 O-O c3 d5 exd5 Nxd5 Nxe5 Nxe5 Rxe5 c6 d4 Bd6 Re1 Qh4 g3 Qh3 Be3 Bg4 Qd3 Rae8 Nd2 Re6 Bxd5 cxd5 a4 f5 f4 g5 axb5 gxf4 Bf2 Rh6 Nf1 f3 0-1"
+    "d4 d5 c4 c6 cxd5 e6 dxe6 fxe6 Nf3 Bb4+ Nc3 Ba5 Bf4"
 ]
 
 # Tokenizacja i padding dla nowych danych
@@ -73,7 +70,9 @@ predictions = model.predict(sample_moves_padded)
 # Wyświetlenie wyników
 for i, pred in enumerate(predictions):
     print(f"Przewidywany wynik dla gry {i+1}: {pred[0]}")
-    if pred[0] >= 0.5:
+    if pred[0] > 0.5:
         print("Białe powinny wygrać.")
+    elif pred[0] == 0.5:
+        print("remis")
     else:
         print("Czarne powinny wygrać.")
