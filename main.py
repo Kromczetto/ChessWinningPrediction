@@ -64,6 +64,8 @@ sample_moves = [
     "e4 c5 Nf3 d6 Bc4 Nf6 d3 a6 a3 g6 b4 Bg7 Bb2 O-O Nc3 cxb4 axb4 Bg4 h3 Bd7 O-O b5 Bb3 Nc6 Nd5 Nxd5 Bxg7 Kxg7 Bxd5 e6 Bb3 Nxb4 Qd2 Nc6 Qc3+ Qf6 Qxf6+ Kxf6 Ra3 Ne7 Rfa1 Bc8 Nd4 Bb7 c4 d5 cxb5 axb5 Rxa8 Rxa8 Rxa8 Bxa8 exd5 Nxd5 Nxb5 Nf4 f3 Nxd3 Bc2 Nc5 Nd6 Bd5 Kf2 h5 Ke3 Ke7 Nc8+ Kd7 Nb6+ Kc6 Nc8 Kd7 Nb6+ Kc6 Na4 Nxa4 Bxa4+ Kd6 Be8 Ke7 Bb5 h4 Kf4 Kf6 g3 hxg3 Kxg3 Kg5 f4+ Kf5 Be8 f6 h4 Bc4 Bc6 e5 fxe5 Kxe5 Be8 Bd3 Ba4 f5 Bb3 f4+ Kf2",
     "e4 e5 Nf3 d6 Bc4 c6 d4 d5 exd5 cxd5 Bb5+ Bd7 Bxd7+ Nxd7 dxe5 Be7 Qxd5 Bb4+ Bd2 Bc5 O-O Ne7 Qe4 f5 exf6 Nxf6 Qe2 O-O Re1 a6 Be3 Bb4 c3 Bd6 Nbd2 Qc7 Rac1 b5 c4 b4 c5 Be5 Nxe5 Qxe5 b3 Ned5 Nf3 Qe4 Qc2 Qe7 Bg5 Qf7 Qc4 h6 Ne5 Qh5 Bxf6 Rxf6 Qxd5+ Kh8 Qxa8+ Kh7 Nf3 Qf5 Qe4 Qxe4 Rxe4 h5 Rxb4 g6 Rb6 a5 Rxf6",
     "e4 e5 Nf3 Nc6 Bb5 d6 Nc3 Bd7 O-O Nf6 Bxc6 Bxc6 d4 exd4 Nxd4 Be7 Re1 Bd7 Nd5 Nxd5 exd5 O-O c4 c6 dxc6 bxc6 b3 Bf6 Bb2 c5 Re3 cxd4 Bxd4 Bxd4 Qxd4 Bf5 Rg3 Bg6 h3 Qb6 Qh4 Qc5 Re1 Rfe8 Rf1 Re2 Qg4 Rxa2 h4 Ra6 h5 d5 hxg6 Rxg6 Qf4 Rxg3 Qxg3 dxc4 Qf3 Rf8 bxc4 Qxc4 g3 a5 Kg2 a4 Rh1 h6 Rh4 Qb5 Qg4 Qd5+ Kh2 Qc6 Qxa4 Qxa4 Rxa4 g5 Kg2 f5 Kf3 Kg7 Ra7+ Kf6 Rh7 Kg6 Ra7 h5 Ra6+ Rf6 Rxf6+ Kxf6 g4 h4 Kg2 fxg4 f3 Kf5 fxg4+ Kxg4 Kh2 Kf3 Kh3 g4+ Kxh4 g3 Kh3 Kf2 Kg4 g2 Kh3 g1=R Kh2 Rf1 Kh3 Kf3 Kh4 Rg1 Kh3 Kf2 Kh4 Kf3 Kh3 Rh1#"
+    "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Nf6 Nxc6 bxc6 e5 Qe7 Qe2 Nd5 c4 Qb4+ Nd2 Nf4 Qe3 Ng6 Bd3 Bc5 Qg3 O-O O-O d6 Nb3 Nxe5 a3 Qb6 Nxc5 Qxc5 Be3 Qa5 b4 Qa4 Bd4 f6 Bxe5 fxe5 f4 Bf5 fxe5 Bxd3 Qxd3 dxe5 Qd7 Qb3 Qxc6 Qe3+ Kh1 Kh8 Rfe1 Qc3 Qxc7 Rac8 Qxa7 Rxc4 h3 Rcf4 Qc5 Qb2 Qxe5 Qb3 Qe3 Qc4 Rac1 Qf7 Qg3 h6 b5 Qd5 a4 Rxa4 Rb1 Rf5 b6 Rg5 b7 Qxb7 Qxg5"
+    #https://www.chess.com/games/view/16074318 Garry Kasparov game
 
     #white
     #black
@@ -73,7 +75,7 @@ sample_moves = [
     #white
     #white
     #black
-]
+]   #white
 
 sample_moves_seq = tokenizer.texts_to_sequences(sample_moves)
 sample_moves_padded = pad_sequences(sample_moves_seq, maxlen=max_sequence_length, padding='post')
